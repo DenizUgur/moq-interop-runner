@@ -200,9 +200,9 @@
       "organization": "floatdrop",
       "repository": "https://github.com/floatdrop/moq-go",
       "draft_versions": [
-        "draft-18"
+        "draft-19"
       ],
-      "notes": "Go implementation of MoQT (draft-ietf-moq-transport-18): transport-agnostic session library, single-instance reference relay, and an interop test client. Both relay and client images are built in-tree (cmd/relay, cmd/interop-client) and follow the runner conventions.",
+      "notes": "Go implementation of MoQT (draft-ietf-moq-transport-19): transport-agnostic session library, single-instance reference relay, and an interop test client. Advertises the moqt-19 ALPN only. Both relay and client images are built in-tree (cmd/relay, cmd/interop-client) and follow the runner conventions.",
       "roles": {
         "relay": {
           "docker": {

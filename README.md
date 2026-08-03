@@ -64,7 +64,7 @@ Filter a single relay: `make interop-remote RELAY=moxygen`. See [Getting Started
 | MOQtail | OzU | 16 | relay | `https://relay.moqtail.dev` |
 | libquicr | Cisco | 14 | relay | `https://us-west-2.relay.quicr.org:33437/relay` |
 | imquic | Meetecho | 16-18 | relay, client | `https://lminiero.it:9000` |
-| moq-go | Vsevolod Strukchinsky | 18 | relay, client |  |
+| moq-go | Vsevolod Strukchinsky | 19 | relay, client |  |
 | moqtopus | Kota Yatagai | 18 | client |  |
 | xquic | Alibaba | 14, 18 | relay, client |  |
 

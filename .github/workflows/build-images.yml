@@ -162,7 +162,7 @@ jobs:
               ;;
             moq-go)
               REF="${{ inputs.ref }}"
-              REF="${REF:-draft-18}"
+              REF="${REF:-draft-19}"
               echo "build_type=build" >> "$GITHUB_OUTPUT"
               echo "ref=$REF" >> "$GITHUB_OUTPUT"
               echo "build_command=./builds/moq-go/build.sh --ref $REF" >> "$GITHUB_OUTPUT"
