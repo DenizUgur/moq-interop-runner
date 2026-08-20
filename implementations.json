@@ -444,7 +444,8 @@
         },
         "client": {
           "docker": {
-            "image": "ghcr.io/openmoq/moqx-interop-client:latest"
+            "image": "ghcr.io/openmoq/moqx-interop-client:latest",
+            "notes": "Pre-built on GHCR. moqx is built on moxygen; if the client binary shares moxygen's MoQInteropClient, it may also be missing moqt-18 from its ALPN list and thus unable to negotiate draft-18 against draft-18-only relays. Verify and remove this note once confirmed or fixed."
           }
         },
         "publisher": {
@@ -473,7 +474,7 @@
         "draft-16",
         "draft-18"
       ],
-      "notes": "C++ implementation. Supports multiple draft versions simultaneously via version negotiation.",
+      "notes": "C++ implementation. Supports multiple draft versions simultaneously via version negotiation. The relay correctly advertises and negotiates draft-18. The interop client image has a known gap: kInteropAlpns in MoQInteropClient.cpp did not include moqt-18 when the current image was built, so client sessions against draft-18-only relays fail at the TLS/QUIC handshake. A fix has been sent upstream; remove the client notes below once a new image is published from the patched source.",
       "roles": {
         "relay": {
           "docker": {
@@ -502,7 +503,8 @@
         },
         "client": {
           "docker": {
-            "image": "ghcr.io/facebookexperimental/moxygen-interop-client:latest-amd64"
+            "image": "ghcr.io/facebookexperimental/moxygen-interop-client:latest-amd64",
+            "notes": "Pre-built on GHCR. Draft-18 ALPN negotiation is not yet working in this image: kInteropAlpns in MoQInteropClient.cpp was missing moqt-18 at build time. Fix tracked in facebookexperimental/moxygen (branch add-moqt-18-interop-alpn). Remove this note once a new image is built from the patched source."
           }
         }
       }
