@@ -530,6 +530,36 @@
         }
       }
     },
+    "stitcher-moq": {
+      "name": "stitcher-moq relay (moq-dev deployment)",
+      "organization": "Pluto TV / Paramount",
+      "repository": "https://github.com/moq-dev/moq",
+      "draft_versions": [
+        "draft-14",
+        "draft-15",
+        "draft-16",
+        "draft-17",
+        "draft-18",
+        "draft-19"
+      ],
+      "notes": "Stock moq-dev moq-relay (v0.14.8) fronting Pluto TV's MoQ SSAI sandbox on GCP. Anonymous subscribe; anonymous publish scoped to the moq-test prefix. Single UDP+TCP 443 via L4 passthrough LB, ACME certificate. Publishes live demo channels 24/7.",
+      "roles": {
+        "relay": {
+          "remote": [
+            {
+              "url": "https://34-72-6-160.sslip.io:443",
+              "transport": "webtransport",
+              "notes": "WebTransport endpoint"
+            },
+            {
+              "url": "moqt://34-72-6-160.sslip.io:443",
+              "transport": "quic",
+              "notes": "Raw QUIC endpoint"
+            }
+          ]
+        }
+      }
+    },
     "xquic": {
       "name": "xquic",
       "organization": "Alibaba",
