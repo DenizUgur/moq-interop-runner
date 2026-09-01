@@ -532,8 +532,8 @@
       }
     },
     "stitcher-moq": {
-      "name": "stitcher-moq relay (moq-dev deployment)",
-      "organization": "Pluto TV / Paramount",
+      "name": "stitcher-moq (moq-dev deployment)",
+      "organization": "Paramount",
       "repository": "https://github.com/moq-dev/moq",
       "draft_versions": [
         "draft-14",
@@ -543,7 +543,7 @@
         "draft-18",
         "draft-19"
       ],
-      "notes": "Stock moq-dev moq-relay (v0.14.8) fronting Pluto TV's MoQ SSAI sandbox on GCP. Anonymous subscribe; anonymous publish scoped to the moq-test prefix. Single UDP+TCP 443 via L4 passthrough LB, ACME certificate. Publishes live demo channels 24/7.",
+      "notes": "Stock moq-dev moq-relay (v0.14.12+) fronting Paramount's MoQ SSAI sandbox on GCP. Anonymous subscribe; anonymous publish scoped to the moq-test and moq-test-00 prefixes. Single UDP+TCP 443 via L4 passthrough LB, ACME certificate. Publishes live demo channels 24/7. The client target is a test client on the current crates.io moq-net/moq-native (0.19.x) implementing all six cases, including subscribe-error and subscribe-before-announce.",
       "roles": {
         "relay": {
           "remote": [
@@ -558,6 +558,12 @@
               "notes": "Raw QUIC endpoint"
             }
           ]
+        },
+        "client": {
+          "docker": {
+            "image": "ghcr.io/englishm/moq-interop-runner-stitcher-moq-client:latest",
+            "notes": "Pre-built on GHCR. To build from source: ./builds/stitcher-moq/build.sh && docker tag stitcher-moq-client:latest ghcr.io/englishm/moq-interop-runner-stitcher-moq-client:latest"
+          }
         }
       }
     },

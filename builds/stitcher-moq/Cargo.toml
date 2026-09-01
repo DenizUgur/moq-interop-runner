@@ -1,0 +1,14 @@
+[package]
+name = "stitcher-moq-client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+moq-native = "0.19"
+rustls = { version = "0.23", default-features = false, features = ["aws-lc-rs"] }
+tokio = { version = "1", features = ["full"] }
+clap = { version = "4", features = ["derive", "env"] }
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+url = "2"

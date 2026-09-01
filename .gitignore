@@ -20,6 +20,7 @@ builds/*/extra-ca.pem
 
 # Rust build artifacts
 builds/moq-dev-rs/target/
+builds/stitcher-moq/target/
 
 # Node/Bun dependencies
 builds/moq-dev-js/node_modules/
