@@ -324,10 +324,9 @@
       "organization": "Eyevinn",
       "repository": "https://github.com/Eyevinn/moqlivemock",
       "draft_versions": [
-        "draft-14",
-        "draft-16"
+        "draft-18"
       ],
-      "notes": "Go implementation. Test client and live CMAF publisher. Publisher announces the moq-test/interop namespace for interop testing.",
+      "notes": "Go implementation, draft-18 only. Test client and live CMAF publisher. Publisher announces the moq-test/interop namespace for interop testing.",
       "roles": {
         "client": {
           "docker": {
