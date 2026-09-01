@@ -1,0 +1,46 @@
+# syntax=docker/dockerfile:1
+# Dockerfile for stitcher-moq-client (Rust)
+#
+# Builds a self-contained test client using moq-lite/moq-native crates.
+#
+# Usage:
+#   docker build -t stitcher-moq-client:latest -f Dockerfile.client .
+
+FROM rust:bookworm AS builder
+
+WORKDIR /build
+
+# Copy project files
+COPY Cargo.toml Cargo.lock* ./
+COPY src ./src
+
+# Build release binary
+RUN cargo build --release
+
+# Runtime image
+FROM debian:bookworm-slim AS runtime
+
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy binary
+COPY --from=builder /build/target/release/stitcher-moq-client /app/stitcher-moq-client
+
+# Copy entrypoint script
+COPY entrypoint-client.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+# Create mlog directory
+RUN mkdir -p /mlog
+
+# Environment variables with defaults
+ENV RELAY_URL=https://relay:4443
+ENV TLS_DISABLE_VERIFY=0
+
+RUN useradd -r -u 1000 -g nogroup moq
+USER moq
+
+ENTRYPOINT ["/app/entrypoint.sh"]

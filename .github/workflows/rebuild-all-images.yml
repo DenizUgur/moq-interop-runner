@@ -62,6 +62,8 @@ jobs:
             ref: ''
           - implementation: moqtopus-client
             ref: ''
+          - implementation: stitcher-moq-client
+            ref: ''
     uses: ./.github/workflows/build-images.yml
     with:
       implementation: ${{ matrix.implementation }}

@@ -24,6 +24,7 @@ on:
           - moq-rs-draft-18-client
           - moq-go
           - moqtopus-client
+          - stitcher-moq-client
       ref:
         description: 'Git ref for source builds (branch/tag/commit). Ignored for adapters.'
         required: false
@@ -176,6 +177,12 @@ jobs:
               echo "build_command=./builds/moqtopus/build.sh --ref $REF --target client" >> "$GITHUB_OUTPUT"
               echo 'images=[{"local":"moqtopus-interop-client:latest","ghcr":"ghcr.io/englishm/moq-interop-runner-moqtopus-interop-client"}]' >> "$GITHUB_OUTPUT"
               ;;
+            stitcher-moq-client)
+              echo "build_type=build" >> "$GITHUB_OUTPUT"
+              echo "ref=" >> "$GITHUB_OUTPUT"
+              echo "build_command=./builds/stitcher-moq/build.sh" >> "$GITHUB_OUTPUT"
+              echo 'images=[{"local":"stitcher-moq-client:latest","ghcr":"ghcr.io/englishm/moq-interop-runner-stitcher-moq-client"}]' >> "$GITHUB_OUTPUT"
+              ;;
             *)
               echo "::error::Unknown implementation: $IMPL"
               exit 1
@@ -203,6 +210,7 @@ jobs:
             moq-rs-draft-18-relay|moq-rs-draft-18-client) IMPL_DIR="builds/moq-rs-draft-18" ;;
             moq-go)                                       IMPL_DIR="builds/moq-go" ;;
             moqtopus-client)                              IMPL_DIR="builds/moqtopus" ;;
+            stitcher-moq-client)                          IMPL_DIR="builds/stitcher-moq" ;;
           esac
 
           if [[ -f "$IMPL_DIR/.last-build.json" ]]; then
