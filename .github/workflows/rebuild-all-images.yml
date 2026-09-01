@@ -8,7 +8,8 @@
 #   Phase 1 (this PR): workflow_dispatch only. Operators trigger a full rebuild
 #     on demand — useful before major interop events or when upstream deps drift.
 #   Phase 2 (follow-up PR): Uncomment the schedule block. Nightly rebuilds keep
-#     every GHCR image fresh without operator intervention.
+#     the runner-owned GHCR images consumed by implementations.json fresh
+#     without operator intervention.
 #
 # Build time vs. freshness tradeoff is documented in issue #96.
 
@@ -27,16 +28,13 @@ permissions:
 jobs:
   build:
     strategy:
+      fail-fast: false
       max-parallel: 4
       matrix:
         include:
           - implementation: moq-rs
             ref: ''
           - implementation: moq-rs-draft-14
-            ref: ''
-          - implementation: moxygen
-            ref: ''
-          - implementation: moq-dev-rs
             ref: ''
           - implementation: moq-dev-rs-client
             ref: ''
@@ -49,6 +47,8 @@ jobs:
           - implementation: xquic-client
             ref: ''
           - implementation: xquic-draft-18-client
+            ref: ''
+          - implementation: xquic-draft-18-relay
             ref: ''
           - implementation: imquic-relay
             ref: ''

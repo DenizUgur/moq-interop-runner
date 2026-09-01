@@ -10,13 +10,12 @@ on:
         options:
           - moq-rs
           - moq-rs-draft-14
-          - moxygen
-          - moq-dev-rs
           - moq-dev-rs-client
           - moq-dev-js-client
           - quiche-moq
           - xquic-relay
           - xquic-client
+          - xquic-draft-18-relay
           - xquic-draft-18-client
           - imquic-relay
           - imquic-client
@@ -85,18 +84,6 @@ jobs:
               echo "build_command=./builds/quiche-moq/build.sh --ref $REF" >> "$GITHUB_OUTPUT"
               echo 'images=[{"local":"quiche-moq-relay:latest","ghcr":"ghcr.io/englishm/moq-interop-runner-quiche-moq-relay"}]' >> "$GITHUB_OUTPUT"
               ;;
-            moxygen)
-              echo "build_type=adapter" >> "$GITHUB_OUTPUT"
-              echo "ref=" >> "$GITHUB_OUTPUT"
-              echo "build_command=docker build -t moxygen-interop:latest -f adapters/moxygen/Dockerfile.relay adapters/moxygen/" >> "$GITHUB_OUTPUT"
-              echo 'images=[{"local":"moxygen-interop:latest","ghcr":"ghcr.io/englishm/moq-interop-runner-moxygen-interop"}]' >> "$GITHUB_OUTPUT"
-              ;;
-            moq-dev-rs)
-              echo "build_type=adapter" >> "$GITHUB_OUTPUT"
-              echo "ref=" >> "$GITHUB_OUTPUT"
-              echo "build_command=docker build -t moq-dev-rs-interop:latest -f adapters/moq-dev-rs/Dockerfile.relay adapters/moq-dev-rs/" >> "$GITHUB_OUTPUT"
-              echo 'images=[{"local":"moq-dev-rs-interop:latest","ghcr":"ghcr.io/englishm/moq-interop-runner-moq-dev-rs-interop"}]' >> "$GITHUB_OUTPUT"
-              ;;
             moq-dev-rs-client)
               echo "build_type=build" >> "$GITHUB_OUTPUT"
               echo "ref=" >> "$GITHUB_OUTPUT"
@@ -132,6 +119,14 @@ jobs:
               echo "ref=$REF" >> "$GITHUB_OUTPUT"
               echo "build_command=./builds/xquic/build.sh --ref $REF --target client-draft-18" >> "$GITHUB_OUTPUT"
               echo 'images=[{"local":"xquic-moq-client-draft-18:latest","ghcr":"ghcr.io/englishm/moq-interop-runner-xquic-moq-client-draft-18"}]' >> "$GITHUB_OUTPUT"
+              ;;
+            xquic-draft-18-relay)
+              REF="${{ inputs.ref }}"
+              REF="${REF:-moq/draft_18_dev}"
+              echo "build_type=build" >> "$GITHUB_OUTPUT"
+              echo "ref=$REF" >> "$GITHUB_OUTPUT"
+              echo "build_command=./builds/xquic/build.sh --ref $REF --target relay-draft-18" >> "$GITHUB_OUTPUT"
+              echo 'images=[{"local":"xquic-moq-relay-draft-18:latest","ghcr":"ghcr.io/englishm/moq-interop-runner-xquic-moq-relay-draft-18"}]' >> "$GITHUB_OUTPUT"
               ;;
             imquic-relay)
               echo "build_type=build" >> "$GITHUB_OUTPUT"
@@ -205,7 +200,7 @@ jobs:
             quiche-moq)             IMPL_DIR="builds/quiche-moq" ;;
             moq-dev-rs-client)      IMPL_DIR="builds/moq-dev-rs" ;;
             moq-dev-js-client)      IMPL_DIR="builds/moq-dev-js" ;;
-            xquic-relay|xquic-client|xquic-draft-18-client) IMPL_DIR="builds/xquic" ;;
+            xquic-relay|xquic-client|xquic-draft-18-relay|xquic-draft-18-client) IMPL_DIR="builds/xquic" ;;
             imquic-relay|imquic-client) IMPL_DIR="builds/imquic" ;;
             moq-rs-draft-18-relay|moq-rs-draft-18-client) IMPL_DIR="builds/moq-rs-draft-18" ;;
             moq-go)                                       IMPL_DIR="builds/moq-go" ;;

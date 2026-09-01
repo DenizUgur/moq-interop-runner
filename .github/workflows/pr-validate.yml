@@ -10,6 +10,10 @@ on:
       - 'implementations.json'
       - 'implementations.schema.json'
       - 'validate-registration.sh'
+      - 'validate-image-publications.py'
+      - '.github/workflows/build-images.yml'
+      - '.github/workflows/rebuild-all-images.yml'
+      - '.github/workflows/pr-validate.yml'
 
 permissions:
   contents: read
@@ -40,3 +44,6 @@ jobs:
           ./validate-registration.sh \
             --base "origin/${{ github.base_ref }}" \
             --summary "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate image publications
+        run: python3 validate-image-publications.py
