@@ -42,6 +42,10 @@ make test-external RELAY_URL=https://other-relay:4443
 
 ## Docker Images
 
+### Rebuilding published images
+
+The manual **Rebuild All Docker Images** GitHub Actions workflow republishes every runner-owned `ghcr.io/englishm/moq-interop-runner-*` image consumed by `implementations.json`. It excludes images published by upstream projects and local-only adapter images. Run `python3 validate-image-publications.py` to verify that the registry consumers and publication workflows remain aligned.
+
 ### moq-relay-ietf
 
 The relay image runs the moq-relay-ietf binary with self-signed TLS certificates.
