@@ -36,9 +36,10 @@ RUN chmod +x /app/entrypoint.sh
 # Create mlog directory
 RUN mkdir -p /mlog
 
-# Environment variables with defaults
+# Environment variables with defaults. TLS_DISABLE_VERIFY deliberately has no
+# default here: the entrypoint translates 1/true into the CLI flag, and an unset
+# var means verification stays on.
 ENV RELAY_URL=https://relay:4443
-ENV TLS_DISABLE_VERIFY=0
 
 RUN useradd -r -u 1000 -g nogroup moq
 USER moq

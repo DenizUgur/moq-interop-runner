@@ -35,12 +35,16 @@ struct Cli {
     #[arg(short, long)]
     list: bool,
 
-    /// Disable TLS certificate verification
-    #[arg(long, env = "TLS_DISABLE_VERIFY")]
+    /// Disable TLS certificate verification.
+    ///
+    /// The TLS_DISABLE_VERIFY env var is translated to this flag by the container
+    /// entrypoint rather than read here: the interface spec allows 0/1 values,
+    /// which clap's env-bool parsing would reject.
+    #[arg(long)]
     tls_disable_verify: bool,
 
-    /// Verbose output
-    #[arg(short, long, env = "VERBOSE")]
+    /// Verbose output (VERBOSE env handled by the entrypoint, as above)
+    #[arg(short, long)]
     verbose: bool,
 }
 
