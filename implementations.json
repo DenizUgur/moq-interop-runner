@@ -649,6 +649,21 @@
           }
         }
       }
+    },
+    "moq-playa": {
+      "name": "moq-playa (@moqt TypeScript)",
+      "organization": "OpenMOQ",
+      "repository": "https://github.com/openmoq/moq-playa",
+      "draft_versions": ["draft-18"],
+      "notes": "Headless Node client using @moqt/transport and @moqt/webtransport over @fails-components/webtransport (quiche HTTP/3). Picks the draft via WebTransport subprotocol negotiation and pins the relay cert with serverCertificateHashes when TLS_DISABLE_VERIFY=1. draft-16 is not registered yet: the tested peer starts its server-initiated request sequence at Request ID 5 instead of 1.",
+      "roles": {
+        "client": {
+          "docker": {
+            "image": "ghcr.io/openmoq/moq-playa-interop-client:latest",
+            "notes": "Pre-built on GHCR (published by openmoq/moq-playa CI; pinned :<git-sha> tags too). To build from source: tools/moq-interop-client/build.sh in the moq-playa repo."
+          }
+        }
+      }
     }
   },
   "_comment_how_to_add": [
