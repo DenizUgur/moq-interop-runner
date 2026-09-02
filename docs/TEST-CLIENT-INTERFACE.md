@@ -213,6 +213,7 @@ setup-only
 announce-only
 publish-namespace-done
 subscribe-error
+rendezvous-timeout
 announce-subscribe
 subscribe-before-announce
 ```

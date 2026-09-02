@@ -18,6 +18,7 @@ This document has been reorganized into separate, focused documents:
 | `announce-only` | Namespace | PUBLISH_NAMESPACE flow |
 | `publish-namespace-done` | Namespace | Unpublish namespace |
 | `subscribe-error` | Subscription | Error for non-existent track |
+| `rendezvous-timeout` | Subscription | Timeout waiting for a publisher |
 | `announce-subscribe` | Subscription | Relay routes subscription to publisher |
 | `subscribe-before-announce` | Subscription | Out-of-order subscribe/announce |
 
