@@ -165,7 +165,9 @@
         "draft-15",
         "draft-16",
         "draft-17",
-        "draft-18"
+        "draft-18",
+        "draft-19",
+        "draft-20"
       ],
       "notes": "Rust implementation by kixelated, supports moq-lite and IETF MoQT. Test client built on moq-net/moq-native. Supports all moq-transport draft versions 14+ via version negotiation.",
       "roles": {
@@ -180,6 +182,11 @@
             "notes": "Adapter wraps upstream image with /certs convention"
           },
           "remote": [
+            {
+              "url": "moqt://cdn.moq.dev:443/anon",
+              "transport": "quic",
+              "notes": "Public raw QUIC relay"
+            },
             {
               "url": "https://cdn.moq.dev/anon",
               "transport": "webtransport",
