@@ -80,6 +80,7 @@ Tests are organized by functional category:
 | `announce-only` | Namespace | Announce namespace, receive OK, close |
 | `publish-namespace-done` | Namespace | Announce, then send PUBLISH_NAMESPACE_DONE |
 | `subscribe-error` | Subscription | Subscribe to non-existent track, expect error |
+| `rendezvous-timeout` | Subscription | Subscribe with a rendezvous window, expect TIMEOUT |
 | `announce-subscribe` | Subscription | Publisher announces, subscriber subscribes |
 | `subscribe-before-announce` | Subscription | Subscribe before publisher announces |
 

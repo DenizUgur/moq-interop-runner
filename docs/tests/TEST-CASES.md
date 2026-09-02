@@ -137,6 +137,32 @@ Each test case follows this structure:
 
 ---
 
+### `rendezvous-timeout`
+
+**Protocol References**: MoQT-18 §5.1 (Subscriptions), §10.2.6 (RENDEZVOUS_TIMEOUT), §10.6 (REQUEST_ERROR)
+
+**Procedure**:
+
+1. Connect and complete SETUP exchange
+2. Send SUBSCRIBE for test namespace/track with RENDEZVOUS_TIMEOUT set to 500 milliseconds
+3. Expect REQUEST_ERROR response
+4. Close connection gracefully
+
+**Test Namespace**: `nonexistent/rendezvous`
+
+**Test Track**: `test-track`
+
+**Success Criteria**:
+
+- REQUEST_ERROR received with error code TIMEOUT
+- Exit code 0 (the timeout was expected and correctly handled)
+
+A relay may use a shorter timeout than requested, so the test does not impose a minimum wait.
+
+**Timeout**: 2 seconds
+
+---
+
 ### `announce-subscribe`
 
 **Protocol References**: MoQT-18 §5.1 (Subscriptions), §6.2 (Publishing Namespaces), §10.7-10.8 (SUBSCRIBE/SUBSCRIBE_OK), §10.15 (PUBLISH_NAMESPACE), §10.5 (REQUEST_OK / `PUBLISH_NAMESPACE_OK` alias)

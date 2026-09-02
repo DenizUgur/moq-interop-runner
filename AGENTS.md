@@ -101,6 +101,7 @@ Test cases are defined in `docs/tests/TEST-CASES.md`. Current tests:
 | `announce-only` | Namespace | PUBLISH_NAMESPACE flow |
 | `publish-namespace-done` | Namespace | Unpublish namespace |
 | `subscribe-error` | Subscription | Error for non-existent track |
+| `rendezvous-timeout` | Subscription | Timeout waiting for a publisher |
 | `announce-subscribe` | Subscription | Publisher announces, subscriber subscribes |
 | `subscribe-before-announce` | Subscription | Out-of-order subscribe/announce |
 
