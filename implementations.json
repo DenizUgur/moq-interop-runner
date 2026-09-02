@@ -355,14 +355,14 @@
       "organization": "OzU",
       "repository": "https://github.com/moqtail/moqtail",
       "draft_versions": [
-        "draft-16"
+        "draft-18"
       ],
       "notes": "Rust implementation.",
       "roles": {
         "relay": {
           "remote": [
             {
-              "url": "https://relay.moqtail.dev",
+              "url": "https://relay18.moqtail.dev",
               "transport": "webtransport"
             }
           ]

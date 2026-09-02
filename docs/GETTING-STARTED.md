@@ -99,7 +99,7 @@ Here's what each field means and what to check:
 | `moq-dev-rs` | Luke Curley | draft-14 | relay | Docker + WebTransport |
 | `moqtransport` | TUM | draft-13 | relay | (no endpoints) |
 | `quiche-moq` | Google | draft-14 | relay | WebTransport |
-| `moqtail` | OzU | draft-14 | relay | WebTransport |
+| `moqtail` | OzU | draft-18 | relay | WebTransport |
 | `imquic` | Meetecho | draft-13, 14 | relay | QUIC + WebTransport |
 | `libquicr` | Cisco | draft-14 | relay | QUIC + WebTransport |
 
