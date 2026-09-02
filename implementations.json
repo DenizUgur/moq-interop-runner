@@ -333,8 +333,15 @@
       "draft_versions": [
         "draft-18"
       ],
-      "notes": "Go implementation, draft-18 only. Test client and live CMAF publisher. Publisher announces the moq-test/interop namespace for interop testing.",
+      "notes": "Go implementation, draft-18 only. Test client, relay and live CMAF publisher. Publisher announces the moq-test/interop namespace for interop testing.",
       "roles": {
+        "relay": {
+          "docker": {
+            "image": "ghcr.io/eyevinn/mlmrel:latest",
+            "url": "moqt://relay:4443",
+            "notes": "mlmrel, published from Eyevinn/moqlivemock CI. Serves raw QUIC and WebTransport (/moq) on one port; registered with a moqt:// URL because mlmtest dials raw QUIC."
+          }
+        },
         "client": {
           "docker": {
             "image": "ghcr.io/eyevinn/mlmtest:latest",
